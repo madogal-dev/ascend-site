@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io; frame-ancestors 'none';" />
+  
+  <!-- Anti-Clickjacking Defense -->
+  <style id="antiClickjack">body{display:none !important;}</style>
+  <script>
+    if (self === top) {
+      var antiClickjack = document.getElementById("antiClickjack");
+      antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+      top.location = self.location;
+    }
+  </script>
+
+  <title>Ascend Intelligences</title>
+  <meta name="description" content="Strategy & Transformation Advisory | Financial Management · IT Governance · Digital Transformation" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1E52A8;
+      --navy-d: #163D85;
+      --gold:   #C9A84C;
+      --gold-l: #e8c878;
+      --teal:   #1A7A7A;
+      --white:  #FFFFFF;
+      --off-white: #F8F9FB;
+      --grey:   #F0F2F5;
+      --dkgrey: #4A4A4A;
+      --midgrey:#888888;
+      --border: #DDE2EC;
+      --shadow: rgba(30,82,168,0.10);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--dkgrey); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── Scroll progress ──────────────────────────────────────── */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 2000; width: 0%; transition: width 0.1s linear; }
+
+    /* ─── Utility ──────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 96px 0; }
+    .section-alt { background: var(--off-white); }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(22,61,133,0.97); backdrop-filter: blur(12px); border-bottom: 2px solid var(--gold); transition: box-shadow 0.3s; }
+    nav.scrolled { box-shadow: 0 4px 28px rgba(0,0,0,0.22); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 0 2rem; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 0.85rem; }
+    .nav-logo-svg { width: 38px; height: 38px; flex-shrink: 0; }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.2; }
+    .nav-brand span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.78); font-size: 0.875rem; font-weight: 500; padding: 0.4rem 0.95rem; border-radius: 6px; transition: all 0.2s; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.10); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .lang-toggle { display: flex; align-items: center; background: rgba(255,255,255,0.10); border: 1px solid rgba(201,168,76,0.45); border-radius: 20px; overflow: hidden; }
+    .lang-btn { padding: 0.3rem 0.85rem; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.2s; background: transparent; border: none; letter-spacing: 0.05em; }
+    .lang-btn.active { background: var(--gold); color: var(--navy); border-radius: 16px; }
+    .lang-btn:hover:not(.active) { color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; border: none; background: transparent; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: rgba(255,255,255,0.85); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav { display: none; flex-direction: column; background: var(--navy-d); border-top: 1px solid rgba(201,168,76,0.25); padding: 1rem 2rem 1.5rem; gap: 0.25rem; }
+    .mobile-nav a { color: rgba(255,255,255,0.82); font-size: 0.95rem; font-weight: 500; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--gold); }
+    .mobile-nav.open { display: flex; }
+
+    /* ─── HERO ─────────────────────────────────────────────────── */
+    .hero { min-height: 100vh; background: linear-gradient(150deg, rgba(12,28,70,0.95) 0%, rgba(30,82,168,0.87) 50%, rgba(18,52,110,0.92) 100%), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop') center/cover no-repeat; display: flex; align-items: center; position: relative; overflow: hidden; padding: 100px 0 60px; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 700px 500px at 80% 35%, rgba(201,168,76,0.10) 0%, transparent 65%), radial-gradient(ellipse 500px 700px at 8% 72%, rgba(26,122,122,0.12) 0%, transparent 65%); pointer-events: none; }
+    .hero::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(201,168,76,0.13); border: 1px solid rgba(201,168,76,0.32); color: var(--gold); font-size: 0.76rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.95rem; border-radius: 20px; margin-bottom: 1.5rem; }
+    .hero-eyebrow::before { content: '◆'; font-size: 0.55rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub { font-size: 1.02rem; color: rgba(255,255,255,0.72); line-height: 1.82; margin-bottom: 2.5rem; max-width: 490px; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--navy); font-weight: 700; font-size: 0.9rem; padding: 0.85rem 1.8rem; border-radius: 8px; transition: all 0.25s; border: 2px solid var(--gold); cursor: pointer; }
+    .btn-primary:hover { background: var(--gold-l); border-color: var(--gold-l); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.38); }
+    .btn-outline { background: transparent; color: var(--white); font-weight: 600; font-size: 0.9rem; padding: 0.85rem 1.8rem; border-radius: 8px; border: 2px solid rgba(255,255,255,0.32); transition: all 0.25s; cursor: pointer; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .hero-card { background: rgba(255,255,255,0.055); border: 1px solid rgba(255,255,255,0.11); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(16px); position: relative; z-index: 1; }
+    .hero-card-title { font-size: 0.75rem; font-weight: 600; color: var(--gold); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .hero-card-title::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--gold); }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.1rem; font-weight: 700; color: var(--white); line-height: 1; }
+    .stat-num span { color: var(--gold); }
+    .stat-label { font-size: 0.73rem; color: rgba(255,255,255,0.58); margin-top: 0.45rem; line-height: 1.45; }
+    .cert-row { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.09); display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .cert-badge { background: rgba(201,168,76,0.14); border: 1px solid rgba(201,168,76,0.28); color: var(--gold); font-size: 0.7rem; font-weight: 700; padding: 0.22rem 0.62rem; border-radius: 6px; letter-spacing: 0.04em; }
+
+    /* ─── MARKETS STRIP ────────────────────────────────────────── */
+    .markets { background: var(--navy-d); border-top: 1px solid rgba(255,255,255,0.07); }
+    .markets-inner { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+    .market-item { display: flex; align-items: center; gap: 0.65rem; padding: 1.1rem 2.2rem; border-right: 1px solid rgba(255,255,255,0.09); color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 500; transition: background 0.2s, color 0.2s; }
+    .market-item:hover { background: rgba(201,168,76,0.07); color: var(--white); }
+    .market-item:last-child { border-right: none; }
+    .market-icon { font-size: 1.05rem; }
+
+    /* ─── SECTION HEADER ───────────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: 3.75rem; }
+    .section-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; }
+    .section-eyebrow::before, .section-eyebrow::after { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+    .section-sub { font-size: 0.97rem; color: var(--midgrey); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+    /* ─── SERVICES ─────────────────────────────────────────────── */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .service-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.75rem; transition: all 0.3s; position: relative; overflow: hidden; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+    .service-card:hover { border-color: transparent; box-shadow: 0 16px 48px var(--shadow); transform: translateY(-5px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(140deg, var(--navy) 0%, #2a5299 100%); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.35rem; box-shadow: 0 4px 12px rgba(27,58,107,0.18); }
+    .service-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 0.75rem; line-height: 1.35; }
+    .service-card p { font-size: 0.875rem; color: var(--midgrey); line-height: 1.78; margin-bottom: 1.35rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag { background: var(--grey); color: var(--navy); font-size: 0.68rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 5px; letter-spacing: 0.03em; }
+
+    /* ─── DOMAINS TABLE ────────────────────────────────────────── */
+    .domains-table { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px var(--shadow); }
+    .domain-row { display: grid; grid-template-columns: 1.8fr 2.2fr 1.1fr; border-bottom: 1px solid var(--border); }
+    .domain-row:last-child { border-bottom: none; }
+    .domain-header { background: var(--navy); }
+    .domain-col { padding: 1rem 1.35rem; }
+    .domain-col-1 { border-right: 1px solid var(--border); }
+    .domain-col-2 { border-right: 1px solid var(--border); }
+    .domain-header .domain-col { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); border-color: rgba(255,255,255,0.1); padding: 0.85rem 1.35rem; }
+    .domain-row:nth-child(even) { background: var(--off-white); }
+    .domain-row:not(.domain-header):hover { background: rgba(27,58,107,0.03); }
+    .domain-name { font-size: 0.88rem; font-weight: 700; color: var(--navy); line-height: 1.4; }
+    .domain-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: flex-start; padding-top: 0.1rem; }
+    .dtag { background: rgba(27,58,107,0.07); color: var(--navy); font-size: 0.68rem; font-weight: 600; padding: 0.18rem 0.55rem; border-radius: 4px; }
+    .market-tag { display: inline-block; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); color: #8a6a1a; font-size: 0.68rem; font-weight: 600; padding: 0.18rem 0.55rem; border-radius: 4px; margin: 0.1rem 0.1rem 0 0; }
+
+    /* ─── ABOUT / TRACK RECORD ─────────────────────────────────── */
+    .clients-strip { margin-bottom: 2.5rem; }
+    .clients-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
+    .clients-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .client-pill { background: var(--white); border: 1.5px solid var(--border); color: var(--navy); font-size: 0.78rem; font-weight: 600; padding: 0.35rem 0.9rem; border-radius: 20px; transition: all 0.2s; }
+    .client-pill:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+    .accomplish-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2.75rem; }
+    .accomplish-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 1.6rem; transition: all 0.3s; position: relative; overflow: hidden; }
+    .accomplish-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold); }
+    .accomplish-card:hover { box-shadow: 0 10px 36px var(--shadow); transform: translateY(-3px); border-color: transparent; }
+    .accomplish-icon { font-size: 1.5rem; margin-bottom: 0.65rem; }
+    .accomplish-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.35; }
+    .accomplish-card p { font-size: 0.82rem; color: var(--midgrey); line-height: 1.72; }
+    .about-cta { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; text-align: center; }
+    .btn-linkedin { display: inline-flex; align-items: center; gap: 0.65rem; background: #0A66C2; color: var(--white); font-size: 0.9rem; font-weight: 700; padding: 0.85rem 2rem; border-radius: 8px; transition: all 0.25s; }
+    .btn-linkedin:hover { background: #0856a8; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,102,194,0.35); }
+    .about-certs-strip { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .cert-pill { background: var(--navy); color: var(--gold); font-size: 0.7rem; font-weight: 700; padding: 0.28rem 0.75rem; border-radius: 20px; letter-spacing: 0.04em; }
+
+    /* ─── CONTACT ──────────────────────────────────────────────── */
+    .contact-inner { max-width: 720px; margin: 0 auto; }
+    .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; box-shadow: 0 8px 40px var(--shadow); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label { font-size: 0.78rem; font-weight: 600; color: var(--navy); letter-spacing: 0.02em; }
+    .form-group input, .form-group select, .form-group textarea { border: 1.5px solid var(--border); border-radius: 8px; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 0.9rem; color: var(--dkgrey); background: var(--off-white); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(27,58,107,0.08); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit { width: 100%; padding: 1rem; background: var(--navy); color: var(--white); border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.25s; letter-spacing: 0.02em; }
+    .form-submit:hover { background: var(--navy-d); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(30,82,168,0.28); }
+    .form-submit:disabled { opacity: 0.65; cursor: not-allowed; transform: none; box-shadow: none; }
+    .form-feedback { border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: 0.9rem; font-weight: 500; line-height: 1.5; }
+    .form-success { background: #edf7ed; border: 1px solid #a3d9a5; color: #1e6b22; }
+    .form-error   { background: #fdf0ef; border: 1px solid #f5b8b4; color: #9b2317; }
+    .contact-info { display: flex; justify-content: center; gap: 2.5rem; margin-top: 2rem; flex-wrap: wrap; }
+    .contact-info-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.84rem; color: var(--midgrey); }
+    .contact-info-item strong { color: var(--navy); }
+
+    /* ─── FOOTER ───────────────────────────────────────────────── */
+    footer { background: var(--navy-d); border-top: 2px solid var(--gold); padding: 3rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: 2rem; margin-bottom: 2rem; }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--white); }
+    .footer-brand span { color: var(--gold); }
+    .footer-tagline { font-size: 0.78rem; color: rgba(255,255,255,0.42); line-height: 1.6; max-width: 240px; }
+    .footer-links-col { text-align: center; }
+    .footer-links-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.83rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-social-col { text-align: right; }
+    .footer-social-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.85rem; }
+    .social-links { display: flex; gap: 0.75rem; justify-content: flex-end; }
+    .social-link { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .social-link:hover { background: var(--gold); border-color: var(--gold); }
+    .social-link:hover svg { fill: var(--navy); }
+    .social-link svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.65); transition: fill 0.2s; }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: 1.5rem; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
+    .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.38); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.76rem; color: rgba(255,255,255,0.38); transition: color 0.2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.65); }
+
+    /* ─── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .domain-row { grid-template-columns: 1fr; }
+      .domain-col-1, .domain-col-2 { border-right: none; border-bottom: 1px solid var(--border); }
+      .accomplish-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-social-col { text-align: left; }
+      .social-links { justify-content: flex-start; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .market-item { padding: 0.65rem 1.2rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .market-item:last-child { border-bottom: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-card { padding: 2rem 1.5rem; }
+      .section { padding: 70px 0; }
+    }
+
+    /* ─── Card images ──────────────────────────────────────────── */
+    .service-card-img {
+      display: block; position: relative; z-index: 1;
+      width: calc(100% + 3.5rem); height: 150px;
+      object-fit: cover; border-radius: 14px 14px 0 0;
+      margin: -2rem -1.75rem 1.5rem;
+    }
+    .accomplish-card-img {
+      display: block; position: relative; z-index: 1;
+      width: calc(100% + 3.2rem); height: 140px;
+      object-fit: cover; border-radius: 12px 12px 0 0;
+      margin: -1.6rem -1.6rem 1.2rem;
+    }
+
+    /* ─── Scroll fade-in ───────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- ═══════════════ NAV ═══════════════ -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <svg class="nav-logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Ascend Intelligences logo">
+          <polygon points="50,2 2,50 50,50" fill="#1E52A8"/>
+          <polygon points="50,2 98,50 50,50" fill="#C9A84C"/>
+          <polygon points="2,50 50,98 50,50" fill="#0F2848"/>
+          <polygon points="98,50 50,98 50,50" fill="#A08030"/>
+          <line x1="50" y1="2" x2="50" y2="98" stroke="white" stroke-width="0.6" opacity="0.2"/>
+          <line x1="2" y1="50" x2="98" y2="50" stroke="white" stroke-width="0.6" opacity="0.2"/>
+        </svg>
+        <div class="nav-brand">Ascend <span>Intelligences</span></div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#services" data-en="Services" data-fr="Services">Services</a></li>
+        <li><a href="#domains" data-en="Expertise" data-fr="Expertise">Expertise</a></li>
+        <li><a href="#about" data-en="Track Record" data-fr="Expérience">Track Record</a></li>
+        <li><a href="#kotiza" data-en="Kotiza" data-fr="Kotiza">Kotiza</a></li>
+        <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav">
+      <a href="#services" data-en="Services" data-fr="Services" onclick="closeMobileNav()">Services</a>
+      <a href="#domains" data-en="Expertise" data-fr="Expertise" onclick="closeMobileNav()">Expertise</a>
+      <a href="#about" data-en="Track Record" data-fr="Expérience" onclick="closeMobileNav()">Track Record</a>
+      <a href="#kotiza" data-en="Kotiza" data-fr="Kotiza" onclick="closeMobileNav()">Kotiza</a>
+      <a href="#contact" data-en="Contact" data-fr="Contact" onclick="closeMobileNav()">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <div class="hero-eyebrow" data-en="Strategy &amp; Transformation" data-fr="Stratégie &amp; Transformation">
+            Strategy &amp; Transformation
+          </div>
+          <h1>
+            <span data-en="Bridging the Gap Between <em>Governance,</em> Strategy, and <em>Technical Excellence</em>" data-fr="Combler le fossé entre la <em>Gouvernance,</em> la Stratégie et <em>l'Excellence Technique</em>"></span>
+          </h1>
+          <p class="hero-sub" data-en="Senior advisory for public sector agencies, international development organizations, and private sector firms — delivering financial modernization, IT governance, and AI-driven digital transformation with measurable, lasting results." data-fr="Conseil senior pour les agences du secteur public, les organisations de développement international et les entreprises privées — modernisation financière, gouvernance IT et transformation numérique pilotée par l'IA, avec des résultats mesurables et durables.">
+            Senior advisory for public sector agencies, international development organizations, and private sector firms — delivering financial modernization, IT governance, and AI-driven digital transformation with measurable, lasting results.
+          </p>
+          <div class="hero-ctas">
+            <a href="#services" class="btn-primary" data-en="Our Services" data-fr="Nos Services">Our Services</a>
+            <a href="#contact" class="btn-outline" data-en="Get in Touch" data-fr="Nous Contacter">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-card-title" data-en="Track Record at a Glance" data-fr="Notre expérience en bref">Track Record at a Glance</div>
+          <div class="stat-grid">
+            <div class="stat">
+              <div class="stat-num">15<span>+</span></div>
+              <div class="stat-label" data-en="Years of federal &amp; international advisory" data-fr="Ans de conseil fédéral et international">Years of federal &amp; international advisory</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3</div>
+              <div class="stat-label" data-en="Sectors: Public · Development · Private" data-fr="Secteurs: Public · Développement · Privé">Sectors: Public · Development · Private</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">6<span>+</span></div>
+              <div class="stat-label" data-en="Expertise domains across FM, IT &amp; AI" data-fr="Domaines d'expertise en GF, IT &amp; IA">Expertise domains across FM, IT &amp; AI</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">2K<span>+</span></div>
+              <div class="stat-label" data-en="End users across 60+ global locations" data-fr="Utilisateurs finaux sur 60+ sites mondiaux">End users across 60+ global locations</div>
+            </div>
+          </div>
+          <div class="cert-row">
+            <span class="cert-badge">CGFM</span>
+            <span class="cert-badge">PMP</span>
+            <span class="cert-badge">CISA</span>
+            <span class="cert-badge">Lean Six Sigma</span>
+            <span class="cert-badge">IBM AI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ MARKETS STRIP ═══════════════ -->
+  <div class="markets">
+    <div class="markets-inner">
+      <div class="market-item"><span class="market-icon">🏛️</span><span data-en="Public Sector Agencies" data-fr="Agences du Secteur Public">Public Sector Agencies</span></div>
+      <div class="market-item"><span class="market-icon">🌍</span><span data-en="International Development" data-fr="Développement International">International Development</span></div>
+      <div class="market-item"><span class="market-icon">🇸🇳</span><span data-en="Senegal &amp; Francophone Africa" data-fr="Sénégal &amp; Afrique Francophone">Senegal &amp; Francophone Africa</span></div>
+      <div class="market-item"><span class="market-icon">💼</span><span data-en="Private Sector" data-fr="Secteur Privé">Private Sector</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ SERVICES ═══════════════ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow" data-en="Financial Management &amp; Digital Governance" data-fr="Gestion Financière &amp; Gouvernance Numérique">Financial Management &amp; Digital Governance</div>
+        <h2 class="section-title" data-en="Three Pillars of Advisory Excellence" data-fr="Trois piliers d'excellence en conseil">Three Pillars of Advisory Excellence</h2>
+        <p class="section-sub" data-en="Each service offering draws from 15+ years of proven, certified expertise across the public sector, international institutions, and the private sector." data-fr="Chaque offre de service s'appuie sur plus de 15 ans d'expertise certifiée au sein du secteur public, des institutions internationales et du secteur privé.">
+          Each service offering draws from 15+ years of proven, certified expertise across the public sector, international institutions, and the private sector.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card fade-up">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=150&fit=crop&crop=center&q=80&auto=format" class="service-card-img" alt="" loading="lazy" />
+          <div class="service-icon">🏛️</div>
+          <h3 data-en="U.S. Federal Advisory" data-fr="Conseil Fédéral Américain">U.S. Federal Advisory</h3>
+          <p data-en="Senior-level IT governance, financial management modernization, and AI implementation for U.S. federal agencies and prime contractors. Deep expertise in defense, justice, and financial agency environments." data-fr="Conseil senior en gouvernance IT, modernisation de la gestion financière et mise en œuvre de l'IA pour les agences fédérales américaines. Expertise approfondie dans les environnements de défense, justice et finance.">
+            Senior-level IT governance, financial management modernization, and AI implementation for U.S. federal agencies and prime contractors. Deep expertise in defense, justice, and financial agency environments.
+          </p>
+          <div class="service-tags">
+            <span class="tag">IT Governance</span>
+            <span class="tag">Enterprise Architecture</span>
+            <span class="tag">ERP / Oracle</span>
+            <span class="tag">OMB A-123</span>
+            <span class="tag">Audit Readiness</span>
+            <span class="tag">AI / RAG</span>
+            <span class="tag">ServiceNow</span>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card fade-up" style="transition-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=150&fit=crop&crop=center&q=80&auto=format" class="service-card-img" alt="" loading="lazy" />
+          <div class="service-icon">🌐</div>
+          <h3 data-en="International Development Consulting" data-fr="Conseil en Développement International">International Development Consulting</h3>
+          <p data-en="Short-term and long-term advisory for multilateral and bilateral institutions. Specializing in public financial management reform, digital transformation, and institutional capacity building across Francophone Africa." data-fr="Missions de conseil court et long terme pour les institutions multilatérales et bilatérales. Spécialisé dans la réforme des finances publiques, la transformation numérique et le renforcement des capacités en Afrique francophone.">
+            Short-term and long-term advisory for multilateral and bilateral institutions. Specializing in public financial management reform, digital transformation, and institutional capacity building across Francophone Africa.
+          </p>
+          <div class="service-tags">
+            <span class="tag">PFM Reform</span>
+            <span class="tag">IPSAS</span>
+            <span class="tag">Francophone Africa</span>
+            <span class="tag">Capacity Building</span>
+            <span class="tag">Institutional Reform</span>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card fade-up" style="transition-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=150&fit=crop&crop=center&q=80&auto=format" class="service-card-img" alt="" loading="lazy" />
+          <div class="service-icon">📦</div>
+          <h3 data-en="Digital Products &amp; Frameworks" data-fr="Produits Numériques &amp; Cadres Méthodologiques">Digital Products &amp; Frameworks</h3>
+          <p data-en="Packaged toolkits, governance frameworks, and training programs built from real-world federal experience. Available for licensing to governments, development programs, and private organizations seeking proven FM and IT governance solutions." data-fr="Kits méthodologiques, cadres de gouvernance et programmes de formation issus d'une expérience fédérale réelle. Disponibles en licence pour les gouvernements, programmes de développement et organisations privées.">
+            Packaged toolkits, governance frameworks, and training programs built from real-world federal experience. Available for licensing to governments, development programs, and private organizations.
+          </p>
+          <div class="service-tags">
+            <span class="tag">FM Audit Toolkit</span>
+            <span class="tag">IT Gov Framework</span>
+            <span class="tag">AI for Gov Finance</span>
+            <span class="tag">Training</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ DOMAINS & EXPERTISE ═══════════════ -->
+  <section class="section section-alt" id="domains">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow" data-en="Skills Matrix" data-fr="Matrice de Compétences">Skills Matrix</div>
+        <h2 class="section-title" data-en="Expertise Domains &amp; Service Delivery" data-fr="Domaines d'Expertise &amp; Prestations">Expertise Domains &amp; Service Delivery</h2>
+        <p class="section-sub" data-en="A multi-certified, cross-sector skill set spanning financial management, technology governance, and digital transformation — deployable across any institutional context." data-fr="Un portefeuille de compétences certifiées couvrant la gestion financière, la gouvernance technologique et la transformation numérique — déployable dans tout contexte institutionnel.">
+          A multi-certified, cross-sector skill set spanning financial management, technology governance, and digital transformation — deployable across any institutional context.
+        </p>
+      </div>
+
+      <div class="domains-table fade-up">
+        <!-- Header -->
+        <div class="domain-row domain-header">
+          <div class="domain-col domain-col-1" data-en="Expertise Domain" data-fr="Domaine d'Expertise">Expertise Domain</div>
+          <div class="domain-col domain-col-2" data-en="What We Deliver" data-fr="Ce que nous livrons">What We Deliver</div>
+          <div class="domain-col domain-col-3" data-en="Primary Markets" data-fr="Marchés Principaux">Primary Markets</div>
+        </div>
+        <!-- Row 1 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">💰 <span data-en="Financial Management Modernization" data-fr="Modernisation de la Gestion Financière">Financial Management Modernization</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">FM System Redesign</span>
+              <span class="dtag">ERP Migration</span>
+              <span class="dtag">Audit Readiness</span>
+              <span class="dtag">IPSAS Adoption</span>
+              <span class="dtag">Financial Reporting</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="Public Sector" data-fr="Secteur Public">Public Sector</span>
+            <span class="market-tag" data-en="Development Orgs" data-fr="Org. de Développement">Development Orgs</span>
+          </div>
+        </div>
+        <!-- Row 2 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">🏗️ <span data-en="IT Governance &amp; Enterprise Architecture" data-fr="Gouvernance IT &amp; Architecture d'Entreprise">IT Governance &amp; Enterprise Architecture</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">EARB</span>
+              <span class="dtag">Portfolio Management</span>
+              <span class="dtag">ServiceNow SPM</span>
+              <span class="dtag">Policy Alignment</span>
+              <span class="dtag">EA Frameworks</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="Federal Agencies" data-fr="Agences Fédérales">Federal Agencies</span>
+            <span class="market-tag" data-en="Governments" data-fr="Gouvernements">Governments</span>
+          </div>
+        </div>
+        <!-- Row 3 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">🤖 <span data-en="AI &amp; Emerging Technology" data-fr="IA &amp; Technologies Émergentes">AI &amp; Emerging Technology</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">RAG Solutions</span>
+              <span class="dtag">ML Applications</span>
+              <span class="dtag">Power BI Dashboards</span>
+              <span class="dtag">Data Architecture</span>
+              <span class="dtag">Knowledge Management</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="All Sectors" data-fr="Tous Secteurs">All Sectors</span>
+            <span class="market-tag" data-en="Private Sector" data-fr="Secteur Privé">Private Sector</span>
+          </div>
+        </div>
+        <!-- Row 4 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">🔒 <span data-en="Internal Controls &amp; Audit Readiness" data-fr="Contrôles Internes &amp; Préparation à l'Audit">Internal Controls &amp; Audit Readiness</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">OMB A-123</span>
+              <span class="dtag">FISMA / NIST 800-53</span>
+              <span class="dtag">ICOFR / ICOFS</span>
+              <span class="dtag">Risk Assessment</span>
+              <span class="dtag">Compliance Review</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="Federal Agencies" data-fr="Agences Fédérales">Federal Agencies</span>
+            <span class="market-tag" data-en="Institutions" data-fr="Institutions">Institutions</span>
+          </div>
+        </div>
+        <!-- Row 5 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">⚙️ <span data-en="ERP Design &amp; Implementation" data-fr="Conception &amp; Déploiement ERP">ERP Design &amp; Implementation</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">Oracle ERP</span>
+              <span class="dtag">MS Dynamics 365</span>
+              <span class="dtag">Legacy Migration</span>
+              <span class="dtag">Data Transformation</span>
+              <span class="dtag">Systems Integration</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="Governments" data-fr="Gouvernements">Governments</span>
+            <span class="market-tag" data-en="Multilaterals" data-fr="Multilatéraux">Multilaterals</span>
+          </div>
+        </div>
+        <!-- Row 6 -->
+        <div class="domain-row">
+          <div class="domain-col domain-col-1">
+            <div class="domain-name">🚀 <span data-en="Strategy &amp; Digital Transformation" data-fr="Stratégie &amp; Transformation Numérique">Strategy &amp; Digital Transformation</span></div>
+          </div>
+          <div class="domain-col domain-col-2">
+            <div class="domain-tags">
+              <span class="dtag">Cloud Migration</span>
+              <span class="dtag">App Rationalization</span>
+              <span class="dtag">Change Management</span>
+              <span class="dtag">Capacity Building</span>
+              <span class="dtag">Roadmap Development</span>
+            </div>
+          </div>
+          <div class="domain-col domain-col-3">
+            <span class="market-tag" data-en="All Sectors" data-fr="Tous Secteurs">All Sectors</span>
+            <span class="market-tag" data-en="Development Orgs" data-fr="Org. de Développement">Development Orgs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TRACK RECORD ═══════════════ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow" data-en="Track Record" data-fr="Expérience">Track Record</div>
+        <h2 class="section-title" data-en="Proven at the Highest Levels" data-fr="Prouvé aux plus hauts niveaux">Proven at the Highest Levels</h2>
+        <p class="section-sub" data-en="Over 15 years of hands-on delivery across the most demanding public sector and private organizations — from the Pentagon to the U.S. Treasury, from the Office of Inspector General to international diaspora investment." data-fr="Plus de 15 ans de livraison opérationnelle dans les organisations publiques et privées les plus exigeantes — du Pentagone au Trésor américain, du Bureau de l'Inspecteur Général aux fonds d'investissement diaspora.">
+          Over 15 years of hands-on delivery across the most demanding public sector and private organizations — from the Pentagon to the U.S. Treasury, from the Office of Inspector General to international diaspora investment.
+        </p>
+      </div>
+
+      <!-- Client organizations -->
+      <div class="clients-strip fade-up">
+        <div class="clients-label" data-en="Organizations &amp; Clients" data-fr="Organisations &amp; Clients">Organizations &amp; Clients</div>
+        <div class="clients-row">
+          <span class="client-pill">IBM</span>
+          <span class="client-pill">Booz Allen Hamilton</span>
+          <span class="client-pill">MIL Corporation</span>
+          <span class="client-pill">Akima / Suvi Global</span>
+          <span class="client-pill">DoD — Office of Inspector General</span>
+          <span class="client-pill">U.S. Treasury</span>
+          <span class="client-pill">U.S. Department of Justice</span>
+          <span class="client-pill">NIH</span>
+          <span class="client-pill">U.S. Air Force</span>
+          <span class="client-pill">U.S. Army</span>
+          <span class="client-pill">FONGAD Invest</span>
+        </div>
+      </div>
+
+      <!-- Key accomplishments -->
+      <div class="accomplish-grid fade-up" style="transition-delay:0.1s">
+        <div class="accomplish-card">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=140&fit=crop&crop=center&q=80&auto=format" class="accomplish-card-img" alt="" loading="lazy" />
+          <div class="accomplish-icon">🤖</div>
+          <h4 data-en="AI/RAG Implementation — DoD OIG" data-fr="Mise en œuvre IA/RAG — DoD OIG">AI/RAG Implementation — DoD OIG</h4>
+          <p data-en="Designed and led an AI-powered Retrieval-Augmented Generation solution serving 2,000+ users across 60+ global locations — transforming institutional knowledge management at the Department of Defense Office of Inspector General." data-fr="Conception et direction d'une solution IA/RAG au service de 2 000+ utilisateurs sur 60+ sites mondiaux — transformant la gestion des connaissances institutionnelles au Bureau de l'Inspecteur Général du DoD.">Designed and led an AI-powered Retrieval-Augmented Generation solution serving 2,000+ users across 60+ global locations — transforming institutional knowledge management at the Department of Defense Office of Inspector General.</p>
+        </div>
+        <div class="accomplish-card">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=140&fit=crop&crop=center&q=80&auto=format" class="accomplish-card-img" alt="" loading="lazy" />
+          <div class="accomplish-icon">💳</div>
+          <h4 data-en="Oracle ERP Migration — U.S. Treasury" data-fr="Migration Oracle ERP — Trésor américain">Oracle ERP Migration — U.S. Treasury</h4>
+          <p data-en="Led the Oracle Financial Management System migration consolidating seven legacy systems, enabling real-time financial reporting and audit compliance — a mission-critical modernization for one of the most complex financial environments in the federal government." data-fr="Direction de la migration Oracle ERP consolidant sept systèmes hérités, permettant des rapports financiers en temps réel et la conformité d'audit — une modernisation critique pour l'un des environnements financiers les plus complexes du gouvernement fédéral.">Led Oracle ERP consolidation of seven legacy systems, enabling real-time financial reporting and full audit compliance at the U.S. Treasury.</p>
+        </div>
+        <div class="accomplish-card">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=140&fit=crop&crop=top&q=80&auto=format" class="accomplish-card-img" alt="" loading="lazy" />
+          <div class="accomplish-icon">🏗️</div>
+          <h4 data-en="IT Governance Framework — DoD OIG" data-fr="Cadre de Gouvernance IT — DoD OIG">IT Governance Framework — DoD OIG</h4>
+          <p data-en="Established a comprehensive IT Governance Framework linking DoD policies, Enterprise Architecture Review Board (EARB), and Portfolio Management — providing end-to-end visibility and control across a complex, multi-site technology portfolio." data-fr="Établissement d'un cadre de gouvernance IT intégrant les politiques DoD, l'EARB et la gestion de portefeuille — assurant une visibilité et un contrôle de bout en bout sur un portefeuille technologique multi-sites complexe.">Established a comprehensive IT Governance Framework linking DoD policies, Enterprise Architecture (EARB), and Portfolio Management across a complex multi-site environment.</p>
+        </div>
+        <div class="accomplish-card">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=140&fit=crop&crop=center&q=80&auto=format" class="accomplish-card-img" alt="" loading="lazy" />
+          <div class="accomplish-icon">☁️</div>
+          <h4 data-en="Cloud Migration &amp; Digital Transformation — DoD/ONR" data-fr="Migration Cloud &amp; Transformation Numérique — DoD/ONR">Cloud Migration &amp; Transformation — DoD/ONR</h4>
+          <p data-en="Led cloud migration and application rationalization for the Department of Defense and Office of Naval Research at Booz Allen Hamilton — modernizing infrastructure and streamlining a legacy application portfolio for mission-critical systems." data-fr="Direction de la migration cloud et rationalisation des applications pour le Département de la Défense et l'Office of Naval Research chez Booz Allen Hamilton — modernisation de l'infrastructure et rationalisation d'un portefeuille applicatif legacy.">Led cloud migration and application rationalization for DoD and the Office of Naval Research at Booz Allen Hamilton, modernizing mission-critical infrastructure.</p>
+        </div>
+      </div>
+
+      <!-- LinkedIn CTA -->
+      <div class="about-cta fade-up" style="transition-delay:0.15s">
+        <a href="https://www.linkedin.com/in/madogal/" target="_blank" rel="noopener" class="btn-linkedin">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span data-en="View Full Profile on LinkedIn" data-fr="Voir le profil complet sur LinkedIn">View Full Profile on LinkedIn</span>
+        </a>
+        <div class="about-certs-strip">
+          <span class="cert-pill">CGFM</span>
+          <span class="cert-pill">PMP</span>
+          <span class="cert-pill">CISA</span>
+          <span class="cert-pill">Lean Six Sigma</span>
+          <span class="cert-pill">IBM AI Foundations</span>
+          <span class="cert-pill">MBA — American University</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ KOTIZA (PRODUCT) ═══════════════ -->
+  <section class="section" id="kotiza">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow" data-en="Our Products" data-fr="Nos Produits">Our Products</div>
+        <h2 class="section-title" data-en="Kotiza — Digital Tontine Registry" data-fr="Kotiza — Le registre numérique des tontines">Kotiza — Digital Tontine Registry</h2>
+        <p class="section-sub" data-en="Kotiza is the flagship software product of Ascend Intelligences, operated in Senegal by its affiliate Ascend International Professional Service SUARL (Dakar)." data-fr="Kotiza est le produit logiciel phare d'Ascend Intelligences, exploité au Sénégal par sa société affiliée Ascend International Professional Service SUARL (Dakar).">
+          Kotiza is the flagship software product of Ascend Intelligences, operated in Senegal by its affiliate Ascend International Professional Service SUARL (Dakar).
+        </p>
+      </div>
+      <div class="services-grid" style="grid-template-columns:minmax(0,640px);justify-content:center">
+        <div class="service-card fade-up">
+          <div class="service-icon">📒</div>
+          <h3 data-en="The tontine register, finally digital" data-fr="Le registre de tontine, enfin numérique">The tontine register, finally digital</h3>
+          <p data-en="Kotiza keeps the register of tontines (rotating savings groups) for organizers in Senegal and across the diaspora: contributions, schedules, and payout order — with reminders sent over WhatsApp and SMS under the Kotiza name. Kotiza never holds funds; it is a register, not a wallet." data-fr="Kotiza tient le registre des tontines pour les gérantes au Sénégal et dans la diaspora : cotisations, échéances et ordre de passage — avec des rappels envoyés par WhatsApp et SMS au nom de Kotiza. Kotiza ne détient aucun fonds : c'est un registre, pas un portefeuille.">
+            Kotiza keeps the register of tontines (rotating savings groups) for organizers in Senegal and across the diaspora: contributions, schedules, and payout order — with reminders sent over WhatsApp and SMS under the Kotiza name. Kotiza never holds funds; it is a register, not a wallet.
+          </p>
+          <div class="service-tags">
+            <span class="tag">Tontines</span>
+            <span class="tag">WhatsApp</span>
+            <span class="tag">SMS</span>
+            <span class="tag">Senegal</span>
+            <span class="tag">Diaspora</span>
+          </div>
+          <div class="hero-ctas" style="margin-top:18px">
+            <a href="https://getkotiza.com" target="_blank" rel="noopener" class="btn-primary" data-en="Visit getkotiza.com" data-fr="Découvrir getkotiza.com">Visit getkotiza.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section class="section section-alt" id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="section-eyebrow" data-en="Let's Work Together" data-fr="Travaillons Ensemble">Let's Work Together</div>
+        <h2 class="section-title" style="display:none" aria-hidden="true"></h2>
+        <p class="section-sub" data-en="Whether you need federal advisory, international development expertise, or a licensed framework — reach out and we'll respond within 24 hours." data-fr="Que vous ayez besoin d'un conseil fédéral, d'une expertise en développement international ou d'un cadre méthodologique sous licence — contactez-nous, nous vous répondrons dans un délai de 24 heures.">
+          Whether you need federal advisory, international development expertise, or a licensed framework — reach out and we'll respond within 24 hours.
+        </p>
+      </div>
+
+      <div class="contact-inner fade-up">
+        <div class="contact-card">
+          <!-- Formspree feedback messages -->
+          <div data-fs-success class="form-feedback form-success" style="display:none">
+            <span data-en="✓ Message sent! We'll get back to you within 24 hours." data-fr="✓ Message envoyé ! Nous vous répondrons dans un délai de 24 heures.">✓ Message sent! We'll get back to you within 24 hours.</span>
+          </div>
+          <div data-fs-error class="form-feedback form-error" style="display:none">
+            <span data-en="Something went wrong. Please try again or email us at info@ascendintelligences.com" data-fr="Une erreur est survenue. Réessayez ou écrivez-nous à info@ascendintelligences.com">Something went wrong. Please try again or email us at info@ascendintelligences.com</span>
+          </div>
+
+          <form id="contact-form">
+            <div class="contact-grid">
+              <div class="form-group">
+                <label data-en="First Name" data-fr="Prénom">First Name</label>
+                <input type="text" name="first_name" placeholder="John / Jean" required maxlength="100" />
+              </div>
+              <div class="form-group">
+                <label data-en="Last Name" data-fr="Nom">Last Name</label>
+                <input type="text" name="last_name" placeholder="Smith / Dupont" required maxlength="100" />
+              </div>
+              <div class="form-group">
+                <label data-en="Organization" data-fr="Organisation">Organization</label>
+                <input type="text" name="organization" data-placeholder-en="Your agency or organization..." data-placeholder-fr="Votre agence ou organisation..." placeholder="Your agency or organization..." maxlength="200" />
+              </div>
+              <div class="form-group">
+                <label data-en="Email Address" data-fr="Adresse e-mail">Email Address</label>
+                <input type="email" name="email" placeholder="you@organization.org" required data-fs-field maxlength="100" />
+              </div>
+              <div class="form-group full">
+                <label data-en="Area of Interest" data-fr="Domaine d'intérêt">Area of Interest</label>
+                <select name="service">
+                  <option value="" data-en="— Select a service —" data-fr="— Choisir un service —">— Select a service —</option>
+                  <option value="federal" data-en="U.S. Federal Advisory" data-fr="Conseil Fédéral Américain">U.S. Federal Advisory</option>
+                  <option value="intl" data-en="International Development Consulting" data-fr="Conseil en Développement International">International Development Consulting</option>
+                  <option value="product" data-en="Digital Products &amp; Frameworks" data-fr="Produits Numériques &amp; Cadres Méthodologiques">Digital Products &amp; Frameworks</option>
+                  <option value="other" data-en="Other / General Inquiry" data-fr="Autre / Renseignement général">Other / General Inquiry</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label data-en="Message" data-fr="Message">Message</label>
+                <textarea name="message" data-placeholder-en="Tell us about your project or engagement needs..." data-placeholder-fr="Décrivez votre projet ou vos besoins en conseil..." data-fs-field maxlength="5000"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit" data-fs-submit-btn data-en="Send Message →" data-fr="Envoyer le message →">Send Message →</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <div class="contact-info-item">📧 <span><strong>Email:</strong> info@ascendintelligences.com</span></div>
+          <div class="contact-info-item">🌐 <span><strong>Web:</strong> ascendintelligences.com</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo-wrap">
+            <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,2 2,50 50,50" fill="#1E52A8"/>
+              <polygon points="50,2 98,50 50,50" fill="#C9A84C"/>
+              <polygon points="2,50 50,98 50,50" fill="#0F2848"/>
+              <polygon points="98,50 50,98 50,50" fill="#A08030"/>
+              <line x1="50" y1="2" x2="50" y2="98" stroke="white" stroke-width="0.6" opacity="0.2"/>
+              <line x1="2" y1="50" x2="98" y2="50" stroke="white" stroke-width="0.6" opacity="0.2"/>
+            </svg>
+            <div class="footer-brand">Ascend <span>Intelligences</span></div>
+          </div>
+          <p class="footer-tagline" data-en="Strategy &amp; Transformation Advisory · Financial Management · IT Governance · Digital Transformation · Public Sector · International Development · Private Sector" data-fr="Conseil en Stratégie &amp; Transformation · Gestion Financière · Gouvernance IT · Transformation Numérique · Secteur Public · Développement International · Secteur Privé">
+            Strategy &amp; Transformation Advisory · Financial Management · IT Governance · Digital Transformation
+          </p>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 data-en="Navigation" data-fr="Navigation">Navigation</h4>
+          <div class="footer-links">
+            <a href="#services" data-en="Services" data-fr="Services">Services</a>
+            <a href="#domains" data-en="Expertise" data-fr="Expertise">Expertise</a>
+            <a href="#about" data-en="Track Record" data-fr="Expérience">Track Record</a>
+            <a href="#kotiza" data-en="Kotiza — our product" data-fr="Kotiza — notre produit">Kotiza — our product</a>
+            <a href="#contact" data-en="Contact" data-fr="Contact">Contact</a>
+          </div>
+        </div>
+
+        <div class="footer-social-col">
+          <h4 data-en="Connect" data-fr="Réseaux">Connect</h4>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/madogal/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="mailto:info@ascendintelligences.com" class="social-link" aria-label="Email">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <div class="footer-copy" data-en="© 2026 Ascend Intelligences LLC. All rights reserved." data-fr="© 2026 Ascend Intelligences LLC. Tous droits réservés.">© 2026 Ascend Intelligences LLC. All rights reserved.</div>
+        <div class="footer-legal">
+          <a href="#" data-en="Privacy" data-fr="Confidentialité">Privacy</a>
+          <a href="#" data-en="Terms" data-fr="CGU">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── Safe HTML Sanitization ───────────────────────────────────
+    function setSafeHTML(el, htmlString) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlString, 'text/html');
+      const allowedTags = ['EM', 'SPAN', 'BR', 'STRONG'];
+      const cleanFragment = document.createDocumentFragment();
+      
+      function sanitizeNode(node, parent) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          parent.appendChild(document.createTextNode(node.textContent));
+        } else if (node.nodeType === Node.ELEMENT_NODE && allowedTags.includes(node.nodeName)) {
+          const cleanElement = document.createElement(node.nodeName.toLowerCase());
+          node.childNodes.forEach(child => sanitizeNode(child, cleanElement));
+          parent.appendChild(cleanElement);
+        }
+      }
+      
+      doc.body.childNodes.forEach(child => sanitizeNode(child, cleanFragment));
+      el.innerHTML = '';
+      el.appendChild(cleanFragment);
+    }
+
+    // ─── Language Toggle ──────────────────────────────────────────
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (!val) return;
+        if (val.includes('<')) { setSafeHTML(el, val); }
+        else { el.textContent = val; }
+      });
+
+      document.querySelectorAll('[data-placeholder-' + lang + ']').forEach(el => {
+        el.placeholder = el.getAttribute('data-placeholder-' + lang);
+      });
+
+      const heroH1Span = document.querySelector('.hero h1 span[data-en]');
+      if (heroH1Span) {
+        const val = heroH1Span.getAttribute('data-' + lang);
+        if (val) setSafeHTML(heroH1Span, val);
+      }
+    }
+
+    // Init hero h1
+    (function() {
+      const span = document.querySelector('.hero h1 span[data-en]');
+      if (span) {
+        const val = span.getAttribute('data-en');
+        if (val) setSafeHTML(span, val);
+      }
+    })();
+
+    // ─── Mobile Nav ───────────────────────────────────────────────
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      const btn = document.getElementById('hamburger');
+      const open = nav.classList.toggle('open');
+      btn.classList.toggle('open', open);
+    }
+    function closeMobileNav() {
+      document.getElementById('mobile-nav').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+    }
+
+    // ─── Nav scroll + progress bar ────────────────────────────────
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (docH > 0 ? (window.scrollY / docH) * 100 : 0) + '%';
+    });
+
+    // ─── Scroll fade-in ───────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ─── Smooth anchor scroll ─────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // ─── Load Environment Variables ──────────────────────────────
+    async function loadEnv() {
+      const env = { FORMSPREE_FORM_ID: 'mredgzbr' }; // Default fallback
+      try {
+        const res = await fetch('.env');
+        if (res.ok) {
+          const text = await res.text();
+          text.split('\n').forEach(line => {
+            const trimmed = line.trim();
+            if (trimmed && !trimmed.startsWith('#')) {
+              const [key, ...valueParts] = trimmed.split('=');
+              const value = valueParts.join('=').trim();
+              if (key && value) {
+                env[key.trim()] = value;
+              }
+            }
+          });
+        }
+      } catch (e) {
+        // Fall back gracefully when CORS blocks fetch (e.g. running on file:// protocol)
+        console.warn("Could not load local .env file. Falling back to default configuration.");
+      }
+      return env;
+    }
+
+    // ─── Contact form — Formspree fetch ──────────────────────────
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn     = this.querySelector('[type="submit"]');
+      const success = document.querySelector('.form-success');
+      const error   = document.querySelector('.form-error');
+      const origText = btn.textContent;
+
+      // Loading state
+      btn.disabled = true;
+      btn.textContent = currentLang === 'fr' ? 'Envoi en cours…' : 'Sending…';
+      success.style.display = 'none';
+      error.style.display   = 'none';
+
+      try {
+        const env = await loadEnv();
+        const formId = env.FORMSPREE_FORM_ID || 'mredgzbr';
+
+        const res = await fetch(`https://formspree.io/f/${formId}`, {
+          method:  'POST',
+          body:    new FormData(this),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          success.style.display = 'block';
+          this.reset();
+        } else {
+          error.style.display = 'block';
+        }
+      } catch (err) {
+        error.style.display = 'block';
+      }
+
+      btn.disabled = false;
+      btn.textContent = origText;
+    });
+  </script>
+</body>
+</html>
