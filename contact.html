@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io;" />
+  <style id="antiClickjack">body{display:none !important;}</style>
+  <script>if (self === top) { var antiClickjack = document.getElementById("antiClickjack"); antiClickjack.parentNode.removeChild(antiClickjack); } else { top.location = self.location; }</script>
+  <title>Contact — Ascend Intelligences</title>
+  <meta name="description" content="Contact Ascend Intelligences for federal advisory, international development expertise or a licensed framework." />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/site.css" />
+  <script src="assets/site.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Ascend Intelligences">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polygon points="50,2 2,50 50,50" fill="#1E52A8"/>
+            <polygon points="50,2 98,50 50,50" fill="#C9A84C"/>
+            <polygon points="2,50 50,98 50,50" fill="#0F2848"/>
+            <polygon points="98,50 50,98 50,50" fill="#A08030"/>
+          </svg>
+          <span class="brand-name">Ascend Intelligences</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="services.html" data-en="Services" data-fr="Services">Services</a>
+          <a href="expertise.html" data-en="Expertise" data-fr="Expertise">Expertise</a>
+          <a href="experience.html" data-en="Experience" data-fr="Expérience">Experience</a>
+          <a href="kotiza.html">Kotiza</a>
+          <a href="contact.html" class="active" data-en="Contact" data-fr="Contact">Contact</a>
+          <button class="lang-switch" type="button" onclick="toggleLang()">Français</button>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-mobile" onclick="toggleMenu()">Menu</button>
+      </div>
+      <nav class="nav-mobile" id="nav-mobile" aria-label="Main (mobile)">
+        <a href="services.html" data-en="Services" data-fr="Services">Services</a>
+        <a href="expertise.html" data-en="Expertise" data-fr="Expertise">Expertise</a>
+        <a href="experience.html" data-en="Experience" data-fr="Expérience">Experience</a>
+        <a href="kotiza.html">Kotiza</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact">Contact</a>
+        <button class="lang-switch" type="button" onclick="toggleLang()">Français</button>
+      </nav>
+    </div>
+  </header>
+
+  <main data-title-en="Contact — Ascend Intelligences" data-title-fr="Contact — Ascend Intelligences">
+
+    <section class="page-title">
+      <div class="container">
+        <div class="label" style="margin-bottom: 20px" data-en="Contact" data-fr="Contact">Contact</div>
+        <h1 data-en="Tell us about your engagement." data-fr="Parlez-nous de votre mission.">Tell us about your engagement.</h1>
+        <p data-en="Federal advisory, international development expertise or a licensed framework — write to us and we will respond within 24 hours." data-fr="Conseil fédéral, expertise en développement international ou cadre méthodologique sous licence — écrivez-nous, nous répondons sous 24 heures.">Federal advisory, international development expertise or a licensed framework — write to us and we will respond within 24 hours.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0">
+      <div class="container aside-col">
+        <div>
+          <div class="label" style="margin-bottom: 16px" data-en="Write to us" data-fr="Nous écrire">Write to us</div>
+          <p style="font-size: 15.5px; line-height: 1.7">
+            <a href="mailto:info@ascendintelligences.com">info@ascendintelligences.com</a><br>
+            <a href="https://www.linkedin.com/in/madogal/" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+          <p style="font-size: 14px; line-height: 1.7; color: var(--muted); margin-top: 24px" data-en="Ascend Intelligences LLC, United States<br>Ascend International Professional Service SUARL, Dakar, Senegal" data-fr="Ascend Intelligences LLC, États-Unis<br>Ascend International Professional Service SUARL, Dakar, Sénégal">Ascend Intelligences LLC, United States<br>Ascend International Professional Service SUARL, Dakar, Senegal</p>
+        </div>
+        <div style="max-width: 720px">
+          <div class="form-feedback form-success" role="status">
+            <span data-en="Message sent. We will get back to you within 24 hours." data-fr="Message envoyé. Nous vous répondrons sous 24 heures.">Message sent. We will get back to you within 24 hours.</span>
+          </div>
+          <div class="form-feedback form-error" role="alert">
+            <span data-en="Something went wrong. Please try again or write to info@ascendintelligences.com." data-fr="Une erreur est survenue. Réessayez ou écrivez à info@ascendintelligences.com.">Something went wrong. Please try again or write to info@ascendintelligences.com.</span>
+          </div>
+          <form id="contact-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="first_name" data-en="First name" data-fr="Prénom">First name</label>
+                <input id="first_name" type="text" name="first_name" required maxlength="100" autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label for="last_name" data-en="Last name" data-fr="Nom">Last name</label>
+                <input id="last_name" type="text" name="last_name" required maxlength="100" autocomplete="family-name" />
+              </div>
+              <div class="form-group">
+                <label for="organization" data-en="Organization" data-fr="Organisation">Organization</label>
+                <input id="organization" type="text" name="organization" maxlength="200" autocomplete="organization" />
+              </div>
+              <div class="form-group">
+                <label for="email" data-en="Email address" data-fr="Adresse e-mail">Email address</label>
+                <input id="email" type="email" name="email" required maxlength="100" autocomplete="email" />
+              </div>
+              <div class="form-group full">
+                <label for="service" data-en="Area of interest" data-fr="Domaine d'intérêt">Area of interest</label>
+                <select id="service" name="service">
+                  <option value="" data-en="— Select —" data-fr="— Choisir —">— Select —</option>
+                  <option value="federal" data-en="U.S. Federal Advisory" data-fr="Conseil fédéral américain">U.S. Federal Advisory</option>
+                  <option value="intl" data-en="International Development Consulting" data-fr="Conseil en développement international">International Development Consulting</option>
+                  <option value="product" data-en="Digital Products &amp; Frameworks" data-fr="Produits numériques &amp; cadres méthodologiques">Digital Products &amp; Frameworks</option>
+                  <option value="kotiza" data-en="Kotiza" data-fr="Kotiza">Kotiza</option>
+                  <option value="other" data-en="Other / general inquiry" data-fr="Autre / renseignement général">Other / general inquiry</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="message" data-en="Message" data-fr="Message">Message</label>
+                <textarea id="message" name="message" maxlength="5000" data-placeholder-en="Tell us about your project or engagement needs." data-placeholder-fr="Décrivez votre projet ou vos besoins en conseil." placeholder="Tell us about your project or engagement needs."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="form-submit" data-en="Send message" data-fr="Envoyer le message">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div data-en="Ascend Intelligences LLC · United States<br>Ascend International Professional Service SUARL · Dakar, Senegal<br>© 2026 Ascend Intelligences LLC" data-fr="Ascend Intelligences LLC · États-Unis<br>Ascend International Professional Service SUARL · Dakar, Sénégal<br>© 2026 Ascend Intelligences LLC">Ascend Intelligences LLC · United States<br>Ascend International Professional Service SUARL · Dakar, Senegal<br>© 2026 Ascend Intelligences LLC</div>
+      <div class="footer-right">
+        <a href="mailto:info@ascendintelligences.com">info@ascendintelligences.com</a><br>
+        <a href="https://www.linkedin.com/in/madogal/" target="_blank" rel="noopener">LinkedIn</a><br>
+        <a href="kotiza.html">Kotiza</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
