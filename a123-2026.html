@@ -89,7 +89,7 @@
 
         <div style="max-width: 560px">
           <div class="form-feedback form-success" role="status">
-            <span data-en="Thank you. The links are below.">Thank you. The links are below.</span>
+            <span>Thank you. The links are below, and a copy is on its way to your inbox.</span>
           </div>
           <div class="form-feedback form-error" role="alert">
             <span data-en="The form did not go through. Write to info@ascendintelligences.com and I will send the files by return.">The form did not go through. Write to info@ascendintelligences.com and I will send the files by return.</span>
@@ -99,8 +99,12 @@
             <p><a class="link-gold" href="downloads/A-123-2026-Quick-Check.xlsx" data-en="Download the Quick Check workbook (Excel)">Download the Quick Check workbook (Excel)</a></p>
             <p style="font-size: 15px; margin-top: 24px" data-en="If you need the whole cycle, the full A-123 Assurance Kit adds the fraud module, the control matrix with evidence of outcome, the test plan, the deficiency log with the Table 2 severity rules, corrective action plans, the principle and component evaluation, the three statement templates and a user guide. <a href='contact.html'>Write to me for the details.</a>">If you need the whole cycle, the full A-123 Assurance Kit adds the fraud module, the control matrix with evidence of outcome, the test plan, the deficiency log with the Table 2 severity rules, corrective action plans, the principle and component evaluation, the three statement templates and a user guide. <a href="contact.html">Write to me for the details.</a></p>
           </div>
-          <form id="download-form">
+          <form id="download-form" action="https://formsubmit.co/info@ascendintelligences.com" method="POST">
             <input type="hidden" name="_subject" value="A-123 2026 free download" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://ascendintelligences.com/a123-2026.html?sent=1" />
+            <input type="hidden" name="_autoresponse" value="Thank you for your interest. Here are the two files:&#10;&#10;Checklist (PDF, 5 pages): https://ascendintelligences.com/downloads/A-123-March-2026-Checklist.pdf&#10;Quick Check workbook (Excel): https://ascendintelligences.com/downloads/A-123-2026-Quick-Check.xlsx&#10;&#10;Both summarize the text of OMB Circular A-123 as revised on March 10, 2026. They are not OMB guidance and do not replace the circular or its appendices.&#10;&#10;If you need the whole cycle, the full A-123 Assurance Kit adds the fraud module, the control matrix, the test plan, the deficiency log, corrective action plans, the evaluation sheets, the statement templates and a user guide. Just reply to this message.&#10;&#10;Madogal Tall, CGFM, PMP, CISA&#10;Ascend Intelligences LLC&#10;https://ascendintelligences.com" />
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
             <input type="hidden" name="source" value="a123-2026" />
             <div class="form-grid">
               <div class="form-group">
@@ -175,25 +179,15 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      var form = document.getElementById('download-form');
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var btn = form.querySelector('[type="submit"]');
-        var success = document.querySelector('.form-success');
-        var error = document.querySelector('.form-error');
+      if (/[?&]sent=1/.test(window.location.search)) {
+        var form = document.getElementById('download-form');
         var links = document.getElementById('dl-links');
-        var orig = btn.textContent;
-        btn.disabled = true;
-        btn.textContent = window.currentLang === 'fr' ? 'Envoi en cours…' : 'Sending…';
-        success.classList.remove('show'); error.classList.remove('show');
-        fetch('https://formspree.io/f/mdeodoew', { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-          .then(function (res) {
-            if (res.ok) { success.classList.add('show'); links.classList.add('show'); form.hidden = true; links.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-            else { error.classList.add('show'); }
-          })
-          .catch(function () { error.classList.add('show'); })
-          .then(function () { btn.disabled = false; btn.textContent = orig; });
-      });
+        document.querySelector('.form-success').classList.add('show');
+        links.classList.add('show');
+        form.hidden = true;
+        links.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (window.history && window.history.replaceState) { window.history.replaceState(null, '', window.location.pathname); }
+      }
     });
   </script>
 

@@ -143,3 +143,7 @@ h3 { font-size: 19px; }
   .brand-name { font-size: 17px; }
   .practice-list a { font-size: 17px; flex-direction: column; align-items: flex-start; gap: 4px; }
 }
+
+/* ─── Contenu propre à une langue ─────────────────────────────── */
+html:not([lang="fr"]) .fr-only { display: none !important; }
+html[lang="fr"] .en-only { display: none !important; }
