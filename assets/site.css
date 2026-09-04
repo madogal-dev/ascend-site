@@ -8,6 +8,7 @@
   --muted: #8A8F99;
   --gold: #C9A84C;
   --gold-d: #A08030;
+  --gold-dd: #85651C;
   --rule: #D9D2BE;
   --rule-light: #EAE6DA;
   --cream: #FBFAF6;
@@ -32,7 +33,7 @@ h1.h1-home { font-size: clamp(24px, 2.4vw, 34px); max-width: 900px; line-height:
 h2 { font-size: 26px; line-height: 1.35; }
 h3 { font-size: 19px; }
 
-.label { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-d); }
+.label { font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-dd); }
 
 /* ─── En-tête ─────────────────────────────────────────────────── */
 .site-header { border-bottom: 1px solid var(--navy); background: var(--white); }
@@ -90,7 +91,7 @@ h3 { font-size: 19px; }
 
 /* ─── Tableau d'expertise ─────────────────────────────────────── */
 .table { width: 100%; border-collapse: collapse; border-top: 1px solid var(--navy); }
-.table th { text-align: left; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-d); padding: 14px 20px 14px 0; border-bottom: 1px solid var(--navy); vertical-align: bottom; }
+.table th { text-align: left; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-dd); padding: 14px 20px 14px 0; border-bottom: 1px solid var(--navy); vertical-align: bottom; }
 .table td { padding: 18px 20px 18px 0; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: 15px; line-height: 1.6; }
 .table td:first-child { font-family: var(--serif); color: var(--navy); font-size: 16px; width: 30%; }
 .table td:last-child { color: var(--muted); width: 22%; }
