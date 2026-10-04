@@ -1,0 +1,3 @@
+# GitHub Pages : ne pas publier les fichiers internes du dépôt.
+exclude:
+  - README.md
