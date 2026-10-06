@@ -127,7 +127,10 @@ h3 { font-size: 19px; }
 .footer-inner a:hover { color: var(--navy); }
 .footer-right { text-align: right; }
 
-/* ─── Bandeaux latéraux (bande kente, toutes tailles d'écran) ──── */
+/* ─── Bandeaux latéraux (toutes tailles d'écran) ──────────────── */
+/* Motif kente en français, motif géométrique sobre en anglais : le même
+   bandeau ne parle pas aux deux publics. Le choix suit la langue affichée
+   (html[lang]), que site.js tient à jour. */
 :root { --band: 14px; }
 body { padding-left: var(--band); padding-right: var(--band); }
 body::before, body::after {
@@ -135,6 +138,9 @@ body::before, body::after {
   position: fixed; top: 0; bottom: 0; width: var(--band);
   background: #F3EEE2 url("side-pattern.svg") center top / 120px auto repeat-y;
   pointer-events: none; z-index: 1;
+}
+html[lang="en"] body::before, html[lang="en"] body::after {
+  background-image: url("side-pattern-en.svg");
 }
 body::before { left: 0; border-right: 1px solid var(--rule); }
 body::after { right: 0; border-left: 1px solid var(--rule); transform: scaleX(-1); }
