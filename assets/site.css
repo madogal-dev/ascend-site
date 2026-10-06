@@ -131,7 +131,7 @@ h3 { font-size: 19px; }
 /* Motif kente en français, motif géométrique sobre en anglais : le même
    bandeau ne parle pas aux deux publics. Le choix suit la langue affichée
    (html[lang]), que site.js tient à jour. */
-:root { --band: 14px; }
+:root { --band: 22px; }
 body { padding-left: var(--band); padding-right: var(--band); }
 body::before, body::after {
   content: "";
@@ -144,7 +144,7 @@ html[lang="en"] body::before, html[lang="en"] body::after {
 }
 body::before { left: 0; border-right: 1px solid var(--rule); }
 body::after { right: 0; border-left: 1px solid var(--rule); transform: scaleX(-1); }
-@media (min-width: 600px) { :root { --band: 28px; } }
+@media (min-width: 600px) { :root { --band: 36px; } }
 @media (min-width: 1100px) { :root { --band: clamp(20px, calc((100vw - 1060px) / 2), 120px); } }
 /* le menu complet ne tient qu'à partir de 1 100 px une fois les bandeaux posés */
 @media (max-width: 1099px) { .nav { display: none; } .menu-toggle { display: inline-block; } }
